@@ -1,1 +1,1 @@
-cscript.exe //NoLogo "Checker.vbs"
+cscript.exe /NoLogo "Verifier.vbs" <"H:\HeartBeat.txt"
