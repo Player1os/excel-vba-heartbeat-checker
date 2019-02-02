@@ -21,13 +21,13 @@ If Not IsNumeric(vVerificationOffsetSecondsString) Then
 End If
 
 ' Compute the number of seconds since the last heartbeat timestamp.
-vSecondsSinceLastHeartbeat = DateDiff("s", DateSerial(1970, 1, 1), Now()) - CLng(vInputString)
+vTimeSinceLastHeartbeatSeconds = DateDiff("s", DateSerial(1970, 1, 1), Now()) - CLng(vInputString)
 
 ' Check whether the number of seconds since the last heartbeat exceeds the number of verification offset seconds.
-If vSecondsSinceLastHeartbeat > CLng(vVerificationOffsetSecondsString) Then
+If vTimeSinceLastHeartbeatSeconds > CLng(vVerificationOffsetSecondsString) Then
 	Call MsgBox("The heartbeat has been inactive for " _
-		& CStr(CLng(vSecondsSinceLastHeartbeat / 3600)) & " hours, " _
-		& CStr(CLng((vSecondsSinceLastHeartbeat Mod 60) / 60)) & " minutes and " _
-		& CStr(vSecondsSinceLastHeartbeat Mod 60) & " seconds.", _
+		& CStr(Int(vTimeSinceLastHeartbeatSeconds / 3600)) & " hours, " _
+		& CStr(Int(vTimeSinceLastHeartbeatSeconds / 60) Mod 60) & " minutes and " _
+		& CStr(vTimeSinceLastHeartbeatSeconds Mod 60) & " seconds.", _
 		48, vMsgBoxTitle)
 End If

@@ -4,7 +4,7 @@
 set DEPLOY_DIRECTORY_PATH=H:\projects\heartbeat-checker
 
 :: Create a fresh deploy directory at the specified path.
-if exist "%DEPLOY_DIRECTORY_PATH%\" rd /s /q "%DEPLOY_DIRECTORY_PATH%"
+if exist "%DEPLOY_DIRECTORY_PATH%\" rmdir /s /q "%DEPLOY_DIRECTORY_PATH%"
 mkdir "%DEPLOY_DIRECTORY_PATH%"
 
 :: Copy all necessary files to the deploy directory.
