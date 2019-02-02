@@ -10,7 +10,9 @@ If Not IsNumeric(vInputString) Then
 	Call Wscript.Quit()
 End If
 
-' Check whether the input string contains a timestamp from at most one hour ago.
-If (DateDiff("s", DateSerial(1970, 1, 1), Now()) - CLng(vInputString)) > 3600 Then
-	Call MsgBox("The PC's heartbeat is inactive.", 16, vMsgBoxTitle)
+	Call MsgBox("The heartbeat has been inactive for " _
+		& CStr(CLng(vSecondsSinceLastHeartbeat / 3600)) & " hours, " _
+		& CStr(CLng((vSecondsSinceLastHeartbeat Mod 60) / 60)) & " minutes and " _
+		& CStr(vSecondsSinceLastHeartbeat Mod 60) & " seconds.", _
+		48, vMsgBoxTitle)
 End If
