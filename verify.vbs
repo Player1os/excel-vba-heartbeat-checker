@@ -1,8 +1,13 @@
+Option Explicit
+
+' Load external modules.
+Dim vWscriptShell: Set vWscriptShell = CreateObject("WScript.Shell")
+
 ' Configure the message box title.
-vMsgBoxTitle = "Heartbeat Checker"
+Dim vMsgBoxTitle: vMsgBoxTitle = "Heartbeat Checker"
 
 ' Read the submitted standard input.
-vInputString = WScript.StdIn.ReadLine()
+Dim vInputString: vInputString = WScript.StdIn.ReadLine()
 
 ' Validate the format of the input string.
 If Not IsNumeric(vInputString) Then
@@ -11,8 +16,8 @@ If Not IsNumeric(vInputString) Then
 End If
 
 ' Read the verification offset seconds value from the environment variable.
-vVerificationOffsetSecondsString = CreateObject("WScript.Shell") _
-	.ExpandEnvironmentStrings("%APP_VERIFICATION_OFFSET_SEC%")
+Dim vVerificationOffsetSecondsString: vVerificationOffsetSecondsString = _
+	vWscriptShell.ExpandEnvironmentStrings("%APP_VERIFICATION_OFFSET_SEC%")
 
 ' Validate the format of the verification offset seconds string.
 If Not IsNumeric(vVerificationOffsetSecondsString) Then
@@ -21,7 +26,8 @@ If Not IsNumeric(vVerificationOffsetSecondsString) Then
 End If
 
 ' Compute the number of seconds since the last heartbeat timestamp.
-vTimeSinceLastHeartbeatSeconds = DateDiff("s", DateSerial(1970, 1, 1), Now()) - CLng(vInputString)
+Dim vTimeSinceLastHeartbeatSeconds: vTimeSinceLastHeartbeatSeconds = _
+	DateDiff("s", DateSerial(1970, 1, 1), Now()) - CLng(vInputString)
 
 ' Check whether the number of seconds since the last heartbeat exceeds the number of verification offset seconds.
 If vTimeSinceLastHeartbeatSeconds > CLng(vVerificationOffsetSecondsString) Then
