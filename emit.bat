@@ -1,4 +1,6 @@
 @echo off
+setlocal enabledelayedexpansion
+setlocal enableextensions
 
 :: Set environment variables.
 call "%~dp0.env.set.bat"
