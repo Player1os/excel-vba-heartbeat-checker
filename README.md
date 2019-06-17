@@ -12,9 +12,10 @@ It is intended to be used when the following conditions are met:
 ## Deployment instructions
 
 1. Create a copy of the `.env.reset.bat` script, name it `.env.set.bat` and modify it as follows:
-	- Set the `DEPLOY_DIRECTORY_PATH` variable to a suitable location, where the contained scripts will be deployed. It is recommended
-	to set this to a location on the shared directory, which is accessible from both machines.
-	- Set the `APP_HEARTBEAT_CHECKER_VERIFICATION_OFFSET_SEC` to an suitable numeric value.
+	- Set `DEPLOY_DIRECTORY_PATH` to a suitable location, where the project's scripts will be deployed. It is recommended to set this to
+	a location on the shared directory, which is accessible from both machines.
+	- Set `APP_HEARTBEAT_CHECKER_VERIFICATION_OFFSET_SEC` to a suitable numeric value indicating the interval within which the *heartbeat*
+	is expected to have been emitted.
 2. Run the `deploy.bat` script to copy the required files to the deploy directory.
 3. Using the **Task Scheduler** application, configure the `emit.bat` script to be regularly executed from the server machine
 with an interval equal to half of the `APP_HEARTBEAT_CHECKER_VERIFICATION_OFFSET_SEC` time span.
