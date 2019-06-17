@@ -17,7 +17,7 @@ End If
 
 ' Read the verification offset seconds value from the environment variable.
 Dim vVerificationOffsetSecondsString: vVerificationOffsetSecondsString = _
-	vWscriptShell.ExpandEnvironmentStrings("%APP_VERIFICATION_OFFSET_SEC%")
+	vWscriptShell.ExpandEnvironmentStrings("%APP_HEARTBEAT_CHECKER_VERIFICATION_OFFSET_SEC%")
 
 ' Validate the format of the verification offset seconds string.
 If Not IsNumeric(vVerificationOffsetSecondsString) Then
