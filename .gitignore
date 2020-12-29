@@ -1,5 +1,9 @@
+# Temporary office files.
+~$*
+
 # Environment variables file.
 .env.set.bat
 
-# Runtime output file.
+# Runtime output files.
 heartbeat.txt
+error_mail_input_table.xlsx

@@ -9,6 +9,8 @@ It is intended to be used when the following conditions are met:
 1. The operating system on both machines is a version of Windows.
 2. The only available communication channel between the machines is a shared directory.
 
+If the server hasn't been active for a specified time span, the client sends an email message to report this to the specified email address.
+
 ## Deployment instructions
 
 1. Create a copy of the `.env.reset.bat` script, name it `.env.set.bat` and modify it as follows:
